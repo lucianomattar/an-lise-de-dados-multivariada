@@ -31,7 +31,7 @@ solucao
 #   tutorial lavaan
 #   https://lavaan.ugent.be/tutorial/tutorial.pdf
 
-library(lavaan)
+library(lavaan) #análise confirmatória e sem
 library(semPlot)
 library(tidySEM)
 library(lavaanPlot)
@@ -49,19 +49,6 @@ summary(afc_um, fit.measures = TRUE, standardized=TRUE)
 
 semPaths(afc_um, "std",  layout = 'tree2', fixedStyle = 'white',
          what = "col", fade = FALSE, residuals = TRUE)
-
-#pag 54
-
-PNAD_2014$lnrenda_pad <- scale(PNAD_2014$lnrenda)
-
-# afc_2 <- '
-# dse =~ iseo + lnrenda 
-# '
-# afc_dois <- cfa(afc_2, data = PNAD_2014)
-# summary(afc_dois, fit.measures = TRUE, standardized=TRUE)
-# 
-# semPaths(afc_dois, "std",  layout = 'tree2', fixedStyle = 'white',
-#          what = "col", fade = FALSE, residuals = TRUE)
 
 #### Modelo de equações estruturais ####
 
