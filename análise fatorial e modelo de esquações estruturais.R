@@ -26,6 +26,14 @@ solucao
 solucao = fa(r = cor_pnad, nfactors = 6, rotate = "varimax")#com método varimax
 solucao
 
+#análise paralela para avaliação a quantidade de fatores ótimos baseada nos auto-valores
+#facima de 1 e considerado ideal.
+fa.parallel(PNAD_2014[1:6])
+
+#a análise paralela sugeriu a soluçao de 1 fator
+solucao = fa(r = cor_pnad, nfactors = 1, rotate = "varimax")#com método varimax
+solucao
+
 #### Análise fatorial confirmatória ####
 
 #   tutorial lavaan
@@ -33,19 +41,19 @@ solucao
 
 library(lavaan) #análise confirmatória e sem
 library(semPlot)
-library(tidySEM)
-library(lavaanPlot)
+# library(tidySEM)
+# library(lavaanPlot)
 
 # Livro_Modelo de equações estruturais, Jorge Alexandre Neves Barbosa
 # https://repositorio.enap.gov.br/bitstream/1/3334/1/Livro_Modelo%20de%20equa%C3%A7%C3%B5es%20estruturais.pdf
-# pag 51
 
+# pag 51
 afc_1 <- '
 ose =~ iseopai + escpai + escmãe  
 '
 
 afc_um <- cfa(afc_1, data = PNAD_2014)
-summary(afc_um, fit.measures = TRUE, standardized=TRUE)
+summary(afc_um, fit.measures = TRUE, standardized=TRUE)#medidas para avaliação do modelo e coeficientes padronizados
 
 semPaths(afc_um, "std",  layout = 'tree2', fixedStyle = 'white',
          what = "col", fade = FALSE, residuals = TRUE)
@@ -64,9 +72,9 @@ model_1 <- '
     escpai ~~ iseopai
 '
 fit_1 <- sem(model_1, data=PNAD_2014)
-summary(fit_1, standardized=TRUE)
+summary(fit_1, fit.measures = TRUE, standardized=TRUE)
 
-semPaths(fit_1, "std",  layout = 'tree2', fixedStyle = 'white',
+semPaths(fit_1, "std",  layout = 'tree', fixedStyle = 'white',
          what = "col", fade = FALSE, residuals = TRUE)
 
 #pag 38
@@ -81,7 +89,7 @@ model_2 <- '
     escpai ~~ iseopai
 '
 fit_2 <- sem(model_2, data=PNAD_2014)
-summary(fit_2, standardized=TRUE)
+summary(fit_2, fit.measures = TRUE, standardized=TRUE)
 
 semPaths(fit_2, "std",  layout = 'tree2', fixedStyle = 'white',
          what = "col", fade = FALSE, residuals = TRUE)
@@ -101,7 +109,7 @@ model_3 <- '
     escpai ~~ iseopai
 '
 fit_3 <- sem(model_3, data=PNAD_2014)
-summary(fit_3, standardized=TRUE)
+summary(fit_3, fit.measures = TRUE, standardized=TRUE)
 
 semPaths(fit_3, "std",  layout = 'tree2', fixedStyle = 'white',
          what = "col", fade = FALSE, residuals = TRUE)
@@ -123,7 +131,7 @@ model_4 <- '
     efeito_total := c + (a*b)
   '
 fit_4 <- sem(model_4, data=PNAD_2014)
-summary(fit_4, standardized=TRUE)
+summary(fit_4, fit.measures = TRUE, standardized=TRUE)
 
 semPaths(fit_4, "std",  layout = 'tree2', fixedStyle = 'white',
          what = "col", fade = FALSE, residuals = TRUE)
