@@ -19,7 +19,7 @@ nivel_escolas = read_sav("https://github.com/lucianomattar/curso-multivariada/bl
 
 hsb <- merge(x = nivel_estudante, y = nivel_escolas, by = "ID") #faz o merge pela variável de identificação entre os bancos
 
-hsb$SECTOR <- as.factor(hsb$SECTOR)#transforma sector em categórico
+hsb$SECTOR <- as.factor(hsb$SECTOR)#transforma sector em categórica -> para plotagem
 hsb$ID <- as.factor(hsb$ID)
 
 library(dplyr)#cria média da renda por ano e atingido
@@ -205,10 +205,3 @@ library(lmerTest)#inseri p-value na função lmer()
 model.6 = lmer(rendamed ~ atingido + ano_g_m + evento*atingido + (1 |municipi), 
                data = temp, REML = TRUE)
 summary(model.6)
-
-# erros robustos
-library(lmtest)
-library(sandwich)
-
-# Robust t test
-coeftest(model.6, vcov = vcovHC(model.6, type = "HC0"))
