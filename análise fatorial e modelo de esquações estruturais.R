@@ -1,6 +1,5 @@
 #Introduçãp regressão linear
-#Luciano Mattar - monitor
-#Curso análise de dados multivariadas Prof. Jorge Alexandre Neves
+#Luciano Mattar
 
 rm(list = ls()) #limpa as variáveis global environment
 
