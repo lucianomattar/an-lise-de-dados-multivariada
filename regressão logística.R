@@ -1,6 +1,5 @@
 #regressão logística
-#Luciano Mattar - monitor
-#Curso análise de dados multivariadas Prof. Jorge Alexandre Neves
+#Luciano Mattar
 
 rm(list = ls()) #limpa as variãveis global environment
 
