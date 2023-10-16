@@ -41,6 +41,8 @@ library(ggplot2)
 
 pnad = read_sav("https://github.com/lucianomattar/curso-multivariada/blob/main/PNAD2014_30a50_novo4.sav?raw=true")
 
+pnad = read_sav("PNAD2014_30a50_novo4.sav")
+
 names(pnad)  #nomes das variáveis
 head(pnad, 10)   #primeiros casos
 str(pnad)    #estrutura do objeto
