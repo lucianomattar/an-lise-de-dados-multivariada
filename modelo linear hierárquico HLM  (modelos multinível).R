@@ -1,4 +1,4 @@
-#Introduçãp regressão linear
+#Modelo multiníve/hierárquico
 #Luciano Mattar
 
 rm(list = ls()) #limpa as variáveis global environment
